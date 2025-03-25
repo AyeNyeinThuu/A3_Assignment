@@ -65,17 +65,13 @@ jobs:
       - name: SSH Remote Commands
         uses: appleboy/ssh-action@v1.0.0
         with:
-          host: ${{ vars.PROXY_HOST }}
+          host: ${{ vars.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
+          proxy_host: ${{ vars.PROXY_HOST }}
+          proxy_username: ${{ secrets.USERNAME }}
+          proxy_key: ${{ secrets.KEY }}
           script: |
             echo "✅ SSH connection successful"
-          # host: ${{ vars.HOST }}
-          # username: ${{ secrets.USERNAME }}
-          # key: ${{ secrets.KEY }}
-          # proxy_host: ${{ vars.PROXY_HOST }}
-          # proxy_username: ${{ secrets.USERNAME }}
-          # proxy_key: ${{ secrets.KEY }}
-          # script: |
           #   tag=${{ github.ref_name }} docker compose -f st124957_a3/docker-compose.yaml down
           #   tag=${{ github.ref_name }} docker compose -f st124957_a3/docker-compose.yaml up -d

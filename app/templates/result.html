@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .result {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="result">
+        <h2>Predicted Car Price Range</h2>
+        <p><strong>Brand:</strong> {{ brand }}</p>
+        <p><strong>Year:</strong> {{ year }}</p>
+        <p><strong>Fuel Type:</strong> {{ fuel }}</p>
+        <p><strong>Max Power (HP):</strong> {{ max_power }}</p>
+        <p><strong>Estimated Price Range:</strong> ${{ prediction }}</p>
+
+        <a href="/">← Predict Another Car</a>
+    </div>
+</body>
+</html>

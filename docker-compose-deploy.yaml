@@ -2,16 +2,16 @@ version: '1'
 services:
   dev:
     command: "python app.py"
-    image: ayenyeintthu95/ml_a2_ayenyeinthu-web:latest
+    image: rredrose13/ml_a3_ayenyeinthu-web:latest
     environment:
       - HOST=0.0.0.0
-      - PORT=5001
+      - PORT=5000
     # This is important for asking Traefik to use your container.
     labels:
       # Allow Traefik to talk with your service
       - traefik.enable=true
       # Tell Traefik to use port 5001
-      - traefik.http.services.web-st124957.loadbalancer.server.port=5001
+      - traefik.http.services.web-st124957.loadbalancer.server.port=5000
       # This config you domain name. By default, your subdomain is web-st124957
       # If you which to change the subdomain name, you uncomment the below configuration
       - traefik.http.routers.web-st124957.rule=Host(`st124957.ml.brain.cs.ait.ac.th`)

@@ -1,4 +1,5 @@
 flask
-numpy
+numpy==2.2.3
 scikit-learn
 pandas
+mlflow

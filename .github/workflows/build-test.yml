@@ -62,7 +62,7 @@ jobs:
     needs: build-test
     runs-on: ubuntu-latest
     steps:
-      - name: Debug: Print SSH key fingerprint
+      - name: Debug Print SSH key fingerprint
         run: |
           echo "${{ secrets.KEY }}" > /tmp/deploy_key
           chmod 600 /tmp/deploy_key

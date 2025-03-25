@@ -1,6 +1,6 @@
 version: '1'
 services:
-  dev:
+  app:
     command: "python app.py"
     image: rredrose13/ml_a3_ayenyeinthu-web:latest
     environment:

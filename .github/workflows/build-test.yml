@@ -62,11 +62,6 @@ jobs:
     needs: build-test
     runs-on: ubuntu-latest
     steps:
-      - name: Debug SSH Key
-        run: |
-          echo "$SSH_KEY" > key.pem
-          chmod 600 key.pem
-          ssh -i key.pem -o StrictHostKeyChecking=no $USERNAME@$HOST 'echo Connected'
       - name: SSH Remote Commands
         uses: appleboy/ssh-action@v1.0.0
         with:
@@ -77,6 +72,5 @@ jobs:
           proxy_username: ${{ secrets.USERNAME }}
           proxy_key: ${{ secrets.KEY }}
           script: |
-            echo "✅ SSH connection successful"
-          #   tag=${{ github.ref_name }} docker compose -f st124957_a3/docker-compose.yaml down
-          #   tag=${{ github.ref_name }} docker compose -f st124957_a3/docker-compose.yaml up -d
+            tag=${{ github.ref_name }} docker compose -f st124957_a3/docker-compose.yaml down
+            tag=${{ github.ref_name }} docker compose -f st124957_a3/docker-compose.yaml up -d

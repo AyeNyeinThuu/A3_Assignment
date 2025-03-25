@@ -24,8 +24,20 @@ def predict_car_price(brand, max_power, year, fuel):
     encoded_brand = list(brand_ohe.transform([[brand]]).toarray()[0])
     sample = np.array([[max_power, year, fuel] + encoded_brand])
     sample[:, 0:2] = scaler.transform(sample[:, 0:2])
-    sample = np.insert(sample, 0, 1, axis=1)
+    #sample = np.insert(sample, 0, 1, axis=1)
     sample_poly = poly.transform(sample)
+    #Defensive padding for MLflow's expected shape
+    expected_shape = 8435
+    actual_shape = sample_poly.shape[1]
+
+    if actual_shape < expected_shape:
+        # Pad with zeros
+        pad_width = expected_shape - actual_shape
+        sample_poly = np.pad(sample_poly, ((0, 0), (0, pad_width)), 'constant')
+    elif actual_shape > expected_shape:
+        # Trim excess features
+        sample_poly = sample_poly[:, :expected_shape]
+
     predicted_class = int(model.predict(sample_poly)[0])
 
     k_range = {

@@ -17,7 +17,7 @@ with open('poly.pkl', 'rb') as f:
     poly = pickle.load(f)
 
 # Load MLflow model
-model_path = os.path.abspath("mlruns/1/0b5b7e962e774839a330a2a6c664a607/artifacts/model")
+model_path = os.path.abspath("mlruns_2/1/0b5b7e962e774839a330a2a6c664a607/artifacts/model")
 model = mlflow.pyfunc.load_model(model_path)
 
 #mlflow.set_tracking_uri("https://mlflow.cs.ait.ac.th/")

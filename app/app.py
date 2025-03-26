@@ -17,8 +17,31 @@ with open('poly.pkl', 'rb') as f:
     poly = pickle.load(f)
 
 # Load MLflow model
-model_path = os.path.abspath("../mlruns/1/0b5b7e962e774839a330a2a6c664a607/artifacts/model")
+model_path = os.path.abspath("mlruns/1/0b5b7e962e774839a330a2a6c664a607/artifacts/model")
 model = mlflow.pyfunc.load_model(model_path)
+
+#mlflow.set_tracking_uri("https://mlflow.cs.ait.ac.th/")
+#model_name = "st124957-a3-model-V1"
+#model = mlflow.pyfunc.load_model(model_uri=f"models:/{model_name}/Staging")
+# os.environ['MLFLOW_TRACKING_USERNAME'] = 'admin'
+# os.environ['MLFLOW_TRACKING_PASSWORD'] = 'password'
+# mlflow.set_tracking_uri("https://mlflow.cs.ait.ac.th/")
+# os.environ["LOGNAME"] = "st124957"
+# mlflow.set_experiment(experiment_name="st124957-a3-v1.1")
+# print("MLflow experiment set successfully!")
+
+# Load model from the model registry.
+# model_name = "st124957-a3-model-V1"
+# model_version = 1
+# stage = "Staging"
+
+# load a specific model version
+# model = mlflow.pyfunc.load_model(model_uri=f"models:/{model_name}/{model_version}")
+# print(model)
+
+# load the latest version of a model in that stage.
+# model = mlflow.pyfunc.load_model(model_uri=f"models:/{model_name}/{stage}")
+# print('final model, ', model)
 
 def predict_car_price(brand, max_power, year, fuel):
     encoded_brand = list(brand_ohe.transform([[brand]]).toarray()[0])
